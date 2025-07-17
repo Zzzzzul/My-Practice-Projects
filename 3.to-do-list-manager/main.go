@@ -137,7 +137,6 @@ func saveTasks() error {
 func loadTasks() error {
 	data, err := os.ReadFile("tasks.json")
 	if err != nil {
-		// If file doesn't exist, it's okay
 		if os.IsNotExist(err) {
 			return nil
 		}
@@ -148,7 +147,6 @@ func loadTasks() error {
 		return err
 	}
 
-	// Recalculate nextID based on highest existing ID
 	maxID := 0
 	for _, task := range tasks {
 		if task.ID > maxID {
